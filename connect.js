@@ -6,11 +6,28 @@ const app = express();
 const checkAuth = (req, res, next) => {
   if (req.session.authenticated) {
     // Se o usuário estiver autenticado, chama o próximo middleware
-    next();
+    checkUserExists(req, res, next);
   } else {
     // Se o usuário não estiver autenticado, redireciona para a página de login
     res.redirect('/login');
   }
+};
+
+const checkUserExists = (req, res, next) => {
+  const username = req.session.username;
+
+  connection.query('SELECT * FROM users WHERE name = ?', [username], (error, results) => {
+    if (error) {
+      console.error('Erro ao executar a consulta: ' + error);
+      res.status(500).json({ error: 'Erro na consulta' });
+    } else {
+      if (results.length > 0) {
+        next();
+      } else {
+        res.redirect('/login');
+      }
+    }
+  });
 };
 
 app.use(session({
@@ -60,6 +77,7 @@ app.post('/login', (req, res) => {
       console.log('Resultado da consulta:', results);
       if(results.length > 0){
         req.session.authenticated = true;
+        req.session.username = username;
         res.json({ success: true});
       }else{
         res.json({ success: false});
