@@ -7,3 +7,15 @@
     transform: translate(-50%,-50%);
     
 }
+
+.custom-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid rgb(0, 0, 0);
+  }
+
+.title{
+    background-color: black;
+      color: white;
+      padding: 10px;
+}
