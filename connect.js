@@ -106,6 +106,17 @@ app.post('/register', (req, res) => {
 
 });
 
+app.get('/products', (req, res) => {
+  connection.query('SELECT * FROM products', (error, results) => {
+    if (error) {
+      console.error('Erro ao executar a consulta: ' + error);
+      res.status(500).json({ error: 'Erro na consulta' });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 app.use('/css', express.static(__dirname + '/css'));
 app.use('/js', express.static(__dirname + '/js'));
 
