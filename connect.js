@@ -62,6 +62,11 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/login.html');
   }); 
 
+app.get('', (req, res) => {
+  res.sendFile(__dirname + '/login.html');
+  }); 
+  
+
 app.get('/register', (req, res) => {
   res.sendFile(__dirname + '/register.html');
   });
