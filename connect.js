@@ -37,10 +37,11 @@ app.use(session({
 }));
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'talysson',
-  password: '91dc019281',
-  database: 'sistema'
+  host: 'bykmdyd0uwwcfqziausm-mysql.services.clever-cloud.com',
+  user: 'ucdayuilal4kdckf',
+  password: 'R3KZssVnq6ZipGCnWMIf',
+  database: 'bykmdyd0uwwcfqziausm',
+  port: '3306'
 });
 
 connection.connect((err) => {
@@ -72,7 +73,6 @@ app.post('/login', (req, res) => {
  connection.query('SELECT * FROM users WHERE name = ? AND pass = ?', [username, password], (error, results) => {
     if (error) {
       console.error('Erro ao executar a consulta: ' + error);
-     // res.status(500).json({ error: 'Erro na consulta' }); 
     }else{
       console.log('Resultado da consulta:', results);
       if(results.length > 0){
