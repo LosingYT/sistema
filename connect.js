@@ -3,6 +3,11 @@ const session = require('express-session');
 const mysql = require('mysql');
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor iniciado na porta ${PORT}.`);
+});
+
 const checkAuth = (req, res, next) => {
   if (req.session.authenticated) {
     // Se o usuário estiver autenticado, chama o próximo middleware
