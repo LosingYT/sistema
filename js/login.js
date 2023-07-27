@@ -26,6 +26,7 @@ document.getElementById('login').addEventListener('click', (event) => {
       });
   });
 
-document.getElementById('register').addEventListener('click', (event) => {
+document.getElementById('register').addEventListener('click', () => {
+  console.log('indo para página de registro')
   window.location.replace('/register');
 });
