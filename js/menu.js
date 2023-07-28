@@ -1,5 +1,5 @@
 // Chamar a função para preencher a tabela quando a página carregar
-window.addEventListener('DOMContentLoaded', populateProductTable);
+/*window.addEventListener('DOMContentLoaded', populateProductTable);
 
 // Função para preencher a tabela com os dados do banco de dados
 function populateProductTable() {
@@ -28,6 +28,9 @@ function populateProductTable() {
       .catch(error => {
         console.error('Erro:', error);
       });
-  }
+  }*/
 
-
+document.getElementById('desconect').addEventListener('click', () =>{
+  console.log('Desconectando...');
+  window.location.replace('/login');
+})
