@@ -107,7 +107,7 @@ app.post('/register', (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
-  connection.query('INSERT INTO users (name,pass) values (?,?)', [username, password], (error, results) => {
+  connection.query('INSERT INTO users (level,name,pass) values (?,?,?)', [null,username, password], (error, results) => {
     if (error) {
       console.error('Erro ao executar a insert: ' + error);
      // res.status(500).json({ error: 'Erro na consulta' }); 
